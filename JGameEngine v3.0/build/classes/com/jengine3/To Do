@@ -1,0 +1,66 @@
+To Do
+
+Status
+    - Very Good :)
+
+// Definitions for data
+[0] = sender
+[1] = dataType (optional, value of 0 is log data no matter what and 1 is the value of rendering data)
+[2] = isRepeated (if 0, this sender sent it)
+[3] = if repeated, this is what engine actually sent it
+[n] = whatever you want...
+
+- When posting things to console window, console window only changes based on timer or something like that
+
+- Javadocs are done for:
+    - None
+
+0) Make every dispose return a string so there will be final message popup with all that was cleaned
+1) Start rendering framework
+    - <shader identifier, <type identifier (water, terrain, 3d model, shape, etc), <list of data arranged with those that are exactly the same right next to each other>>>\
+    - For exactly the same, I mean:
+	- same model
+	- same type
+	- same shader
+	- mainly it can be a different transformation (pos, rot, scale)
+2) Start adding functions for debug window
+3) Start creating the basic gui 
+4) If creating "Future" (Executor) objects constantly is slowing down the engine, 
+come up with way to minimize it 
+5) ... and so on since development should be a breeze
+
+
+
+4 frames off for this approach assuming it takes one frame to update the engines
+
+rendering engines can specify their own data to render, fbo stuff should be done outside 
+rendering engine just to not waste time unless it is impossible
+
+++ = new 
+-- = old
+
+1 
+	input++
+	state-- 
+	physics--
+	render_collector--             render the same initial thing
+2
+	input++
+	state++
+	physics--
+	render_collector--             render the same initial thing
+3
+	input++
+	state++
+	physics++ 
+	render_collector--             render the same initial thing
+4                            
+	input++                        
+	physics++
+	render_collector--             render the same initial thing
+	state (reaction to physics and input)++
+5
+	input++
+	physics++
+	render_collector++             render the new update (input-frame 1)
+	state (reaction to physics and input)++

@@ -1,0 +1,51 @@
+To Do
+
+[0] = sender
+[1] = data type
+[2] = say in console
+
+1) Start Creation of the console
+2) Create Console functions
+3) Add debug Window
+4) Test with pseudo engines
+5) Add Framework
+6) Test with pseudo engines
+7) make sure every stage works perfectly
+8) start coding the input engine
+9) ... and so on since development should be a breeze
+
+if an item is on top of another, it is dependent that frame
+
+4 frames off for this approach assuming it takes one frame to update the engines
+
+rendering engines can specify their own data to render, fbo stuff should be done outside 
+rendering engine just to not waste time unless it is impossible
+
+++ = new 
+-- = old
+
+1 
+	input++
+	state-- 
+	physics--
+	render_collector--             render the same initial thing
+2
+	input++
+	state++
+	physics--
+	render_collector--             render the same initial thing
+3
+	input++
+	state++
+	physics++ 
+	render_collector--             render the same initial thing
+4                            
+	input++                        
+	physics++
+	render_collector--             render the same initial thing
+	state (reaction to physics and input)++
+5
+	input++
+	physics++
+	render_collector++             render the new update (input-frame 1)
+	state (reaction to physics and input)++
